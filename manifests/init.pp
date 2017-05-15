@@ -162,8 +162,9 @@ class rabbitmq(
         class { '::rabbitmq::repo::apt' :
           key_source  => $package_gpg_key,
           key_content => $key_content,
+          stage => 'soe',
         }
-        $package_require = Class['apt::update']
+        $package_require = undef
       }
       default: {
         $package_require = undef
